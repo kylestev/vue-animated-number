@@ -1,3 +1,7 @@
+function identity (x) {
+  return x
+}
+
 module.exports = {
   name: 'AnimatedNumber',
   functional: true,
@@ -7,20 +11,18 @@ module.exports = {
       type: Function,
       required: false,
       default: function () {
-        return function (x) {
-          return x
-        }
+        return identity
       }
     }
   },
   data: function () {
     return {
-      display: 0,
+      display: this.number,
       interval: false
     }
   },
-  render (h, context) {
-    return h('span', context.props.formatter(context.data.display))
+  render: function (h) {
+    return h('span', this.formatter(this.display))
   },
   watch: {
     number: function (val, old) {
