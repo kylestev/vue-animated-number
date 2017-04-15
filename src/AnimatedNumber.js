@@ -4,7 +4,6 @@ function identity (x) {
 
 module.exports = {
   name: 'AnimatedNumber',
-  functional: true,
   props: {
     number: Number,
     formatter: {
