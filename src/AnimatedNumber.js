@@ -28,14 +28,9 @@ module.exports = {
       const $vm = this
       $vm.interval && clearInterval($vm.interval)
 
-      let speed = 10
-      if (val < old) {
-        speed = 4
-      }
-
       $vm.interval = setInterval(function () {
         if ($vm.display !== $vm.number) {
-          const diff = ($vm.number - $vm.display) / speed
+          const diff = ($vm.number - $vm.display) / 10
           $vm.display += diff >= 0 ? Math.ceil(diff) : Math.floor(diff)
         } else {
           clearInterval($vm.interval)
